@@ -1,0 +1,2123 @@
+
+<!DOCTYPE html>
+<html lang="id" class="dark-mode">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technonauts | XI-TJKT-2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Mode Variables */
+            --primary: #4a6bff;
+            --primary-light: #6d88ff;
+            --primary-dark: #3a5bef;
+            --secondary: #f8f9fa;
+            --accent: #ff6b6b;
+            --accent-light: #ff8e8e;
+            --dark: #343a40;
+            --dark-light: #495057;
+            --light: #ffffff;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+            --success: #28a745;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+            
+            /* Backgrounds */
+            --bg-primary: linear-gradient(135deg, #f5f7ff 0%, #e6ebff 100%);
+            --bg-secondary: rgba(255, 255, 255, 0.95);
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --text-primary: #343a40;
+            --text-secondary: #6c757d;
+
+            /* Structure Colors Light Mode */
+            --wali-kelas-bg: rgba(102, 126, 234, 0.1);
+            --ketua-bg: rgba(79, 172, 254, 0.1);
+            --bendahara-bg: rgba(67, 233, 123, 0.1);
+            --sekretaris-bg: rgba(250, 112, 154, 0.1);
+            
+            --wali-kelas-border: #667eea;
+            --ketua-border: #4facfe;
+            --bendahara-border: #43e97b;
+            --sekretaris-border: #fa709a;
+            
+            --wali-kelas-text: #667eea;
+            --ketua-text: #4facfe;
+            --bendahara-text: #43e97b;
+            --sekretaris-text: #fa709a;
+            
+            --structure-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .dark-mode {
+            /* Dark Mode Variables */
+            --primary: #6d88ff;
+            --primary-light: #8fa3ff;
+            --primary-dark: #5a7bff;
+            --secondary: #2d3748;
+            --accent: #ff6b6b;
+            --accent-light: #ff8e8e;
+            --dark: #e2e8f0;
+            --dark-light: #cbd5e0;
+            --light: #1a202c;
+            --gray: #a0aec0;
+            --gray-light: #4a5568;
+            --success: #48bb78;
+            
+            /* Backgrounds */
+            --bg-primary: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            --bg-secondary: rgba(45, 55, 72, 0.95);
+            --bg-card: rgba(45, 55, 72, 0.9);
+            --text-primary: #e2e8f0;
+            --text-secondary: #a0aec0;
+
+            /* Structure Colors Dark Mode */
+            --wali-kelas-bg: rgba(102, 126, 234, 0.15);
+            --ketua-bg: rgba(79, 172, 254, 0.15);
+            --bendahara-bg: rgba(67, 233, 123, 0.15);
+            --sekretaris-bg: rgba(250, 112, 154, 0.15);
+            
+            --wali-kelas-border: #8fa3ff;
+            --ketua-border: #6dccff;
+            --bendahara-border: #5ff192;
+            --sekretaris-border: #ff8fb1;
+            
+            --wali-kelas-text: #e2e8f0;
+            --ketua-text: #e2e8f0;
+            --bendahara-text: #e2e8f0;
+            --sekretaris-text: #e2e8f0;
+            
+            --structure-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--bg-primary) 100%);
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 120px;
+            right: 30px;
+            z-index: 1000;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(20px);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(15deg) scale(1.1);
+            box-shadow: 0 8px 25px rgba(74, 107, 255, 0.3);
+        }
+        
+        .theme-toggle i {
+            font-size: 1.3rem;
+            color: var(--primary);
+            transition: transform 0.5s ease;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: var(--bg-secondary);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow);
+            padding: 1.2rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.8rem 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            margin-right: 12px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(74, 107, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover .logo-img {
+            transform: rotate(5deg);
+            box-shadow: 0 6px 20px rgba(74, 107, 255, 0.4);
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+            transition: width 0.4s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .nav-link:hover::before {
+            width: 100%;
+        }
+        
+        .admin-login {
+            background: var(--gradient);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 107, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .admin-login::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .admin-login:hover::before {
+            left: 100%;
+        }
+        
+        .admin-login:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(74, 107, 255, 0.4);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 6rem 0 4rem;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            gap: 0.7rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            box-shadow: 0 6px 20px rgba(74, 107, 255, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(74, 107, 255, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(74, 107, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(74, 107, 255, 0.2);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        /* Wali Kelas */
+        .wali-kelas-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin: 0 auto;
+            max-width: 900px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .wali-kelas-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .wali-kelas-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        
+        .wali-kelas-info {
+            flex: 1;
+        }
+        
+        .wali-kelas-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .wali-kelas-info p {
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Structure Tree Hierarki */
+        .structure-container {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .structure-tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        
+        .structure-level {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .structure-level::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background: var(--primary-light);
+            opacity: 0.3;
+        }
+        
+        .structure-level:first-child::before {
+            display: none;
+        }
+        
+        .structure-item {
+            background: transparent;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            min-width: 180px;
+            margin: 0 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .structure-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .structure-role {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .structure-name {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .structure-connector {
+            position: absolute;
+            background: var(--primary-light);
+            opacity: 0.5;
+        }
+        
+        .structure-connector.vertical {
+            width: 2px;
+            height: 20px;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .structure-connector.horizontal {
+            height: 2px;
+            width: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .structure-connector.horizontal.left {
+            right: 100%;
+        }
+        
+        .structure-connector.horizontal.right {
+            left: 100%;
+        }
+        
+        /* Improved Structure Styles dengan Background Transparan dan Border */
+        .structure-item.wali-kelas {
+            background: var(--wali-kelas-bg);
+            border: 2px solid var(--wali-kelas-border);
+            box-shadow: var(--structure-shadow);
+        }
+        
+        .structure-item.wali-kelas .structure-role,
+        .structure-item.wali-kelas .structure-name {
+            color: var(--wali-kelas-text);
+        }
+        
+        .structure-item.ketua {
+            background: var(--ketua-bg);
+            border: 2px solid var(--ketua-border);
+            box-shadow: var(--structure-shadow);
+        }
+        
+        .structure-item.ketua .structure-role,
+        .structure-item.ketua .structure-name {
+            color: var(--ketua-text);
+        }
+        
+        .structure-item.bendahara {
+            background: var(--bendahara-bg);
+            border: 2px solid var(--bendahara-border);
+            box-shadow: var(--structure-shadow);
+        }
+        
+        .structure-item.bendahara .structure-role,
+        .structure-item.bendahara .structure-name {
+            color: var(--bendahara-text);
+        }
+        
+        .structure-item.sekretaris {
+            background: var(--sekretaris-bg);
+            border: 2px solid var(--sekretaris-border);
+            box-shadow: var(--structure-shadow);
+        }
+        
+        .structure-item.sekretaris .structure-role,
+        .structure-item.sekretaris .structure-name {
+            color: var(--sekretaris-text);
+        }
+        
+        /* Schedule */
+        .schedule-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .schedule-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .schedule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .schedule-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--light);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .schedule-table th {
+            background: var(--gradient);
+            color: white;
+            padding: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .schedule-table td {
+            padding: 1.2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-light);
+            color: var(--text-primary);
+        }
+        
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .schedule-table tr:hover {
+            background: rgba(74, 107, 255, 0.05);
+        }
+        
+        .piket-list {
+            list-style: none;
+        }
+        
+        .piket-list li {
+            padding: 1rem 1.2rem;
+            margin-bottom: 0.8rem;
+            background: var(--light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            color: var(--text-primary);
+        }
+        
+        .piket-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .piket-list li i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 2rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        /* Gallery Modal Styles dengan Animasi Smooth */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            backdrop-filter: blur(20px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .gallery-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            margin: auto;
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            transform: scale(0.7) translateY(50px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .gallery-modal.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+        
+        .modal-image-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .modal-info {
+            padding: 2rem;
+            text-align: center;
+            background: var(--bg-secondary);
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-alt {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2001;
+            backdrop-filter: blur(10px);
+        }
+        
+        .modal-close:hover {
+            background: var(--accent);
+            transform: rotate(90deg) scale(1.1);
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2001;
+            backdrop-filter: blur(10px);
+        }
+        
+        .modal-prev {
+            left: 1rem;
+        }
+        
+        .modal-next {
+            right: 1rem;
+        }
+        
+        .modal-nav:hover {
+            background: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .modal-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: translateY(-50%) scale(0.9);
+        }
+        
+        .modal-nav:disabled:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: translateY(-50%) scale(0.9);
+        }
+        
+        /* Slide animations yang sangat smooth */
+        .modal-image.slide-left {
+            animation: slideLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+        }
+        
+        .modal-image.slide-right {
+            animation: slideRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+        }
+        
+        @keyframes slideLeft {
+            0% {
+                transform: translateX(100%) scale(0.9);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0) scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideRight {
+            0% {
+                transform: translateX(-100%) scale(0.9);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0) scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Image counter */
+        .modal-counter {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 2001;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            color: var(--light);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--light) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .footer-about {
+            margin-bottom: 1.8rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            color: var(--light);
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            opacity: 0.9;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary-light);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.8rem;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px) rotate(5deg);
+            box-shadow: 0 5px 15px rgba(74, 107, 255, 0.4);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        @keyframes themeSwitch {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.2) rotate(180deg);
+            }
+            100% {
+                transform: scale(1) rotate(360deg);
+            }
+        }
+        
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: var(--gradient);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .schedule-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .wali-kelas-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem;
+            }
+            
+            .wali-kelas-img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            /* Struktur Organisasi */
+.structure-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.structure-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Tiap level */
+.structure-level {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+  position: relative;
+  width: 100%;
+}
+
+.structure-level.double {
+  gap: 100px;
+}
+
+.structure-level.multi {
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Kotak jabatan */
+.structure-item {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 14px 24px;
+  border-radius: 10px;
+  text-align: center;
+  min-width: 160px;
+  color: #fff;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Teks di dalam kotak */
+.structure-role {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #00c2c2;
+}
+
+.structure-name {
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* Garis penghubung vertikal */
+.structure-line.down {
+  width: 2px;
+  height: 40px;
+  background: #00c2c2;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Garis penghubung horizontal (untuk level double/multi) */
+.structure-level.double::before,
+.structure-level.multi::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: #00c2c2;
+  z-index: 0;
+}
+
+/* Warna khusus per jabatan */
+.wali-kelas { background: rgba(0, 194, 194, 0.25); }
+.ketua { background: rgba(0, 194, 255, 0.15); }
+.wakil { background: rgba(255, 206, 86, 0.15); }
+.sekretaris { background: rgba(0, 255, 163, 0.15); }
+.bendahara { background: rgba(255, 153, 0, 0.15); }
+.kebersihan { background: rgba(255, 0, 128, 0.15); }
+.keamanan { background: rgba(0, 128, 255, 0.15); }
+
+/* Responsif */
+@media (max-width: 768px) {
+  .structure-level.double,
+  .structure-level.multi {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+                flex-wrap: wrap;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .hero {
+                padding: 8rem 0 4rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .theme-toggle {
+                top: 100px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+            
+            .structure-container, .schedule-card {
+                padding: 1.5rem;
+                margin: 0 1rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+            
+            .modal-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .modal-close {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+            
+            /* Mobile Structure lebih kecil */
+            .structure-item {
+                min-width: 130px;
+                padding: 0.8rem;
+                flex: 0 0 calc(50% - 0.5rem);
+                max-width: 150px;
+            }
+            
+            .structure-role {
+                font-size: 0.85rem;
+            }
+            
+            .structure-name {
+                font-size: 0.75rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .theme-toggle {
+                top: 90px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            /* Mobile Structure paling kecil */
+            .structure-item {
+                min-width: 120px;
+                padding: 0.7rem;
+                flex: 0 0 calc(50% - 0.3rem);
+                max-width: 140px;
+            }
+            
+            .structure-role {
+                font-size: 0.8rem;
+                margin-bottom: 0.3rem;
+            }
+            
+            .structure-name {
+                font-size: 0.7rem;
+            }
+            
+            .structure-container {
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .structure-item {
+                min-width: 110px;
+                padding: 0.6rem;
+                flex: 0 0 calc(50% - 0.2rem);
+                max-width: 130px;
+            }
+            
+            .structure-role {
+                font-size: 0.75rem;
+            }
+            
+            .structure-name {
+                font-size: 0.65rem;
+            }
+        }
+
+        .anggota-container {
+                padding: 1rem;
+            }
+
+            
+    </style>
+</head>
+<body>
+	<!-- Popup Pengumuman -->
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup-container">
+        <div class="popup-content">
+            <h3>Welcome to XI-TJKT-2</h3>
+            <p>&quot;Silahkan liat-liat web kelasnya , JANGAN DI CONTEK IYEEE&quot;, Webnya ini di buat hanya karena iseng ji. Sebenarnya kurang bisa ngoding makanya dibantu dikit sama AI wkwkwk. Jan lupa bersyukur hari ini temang-temang wkwk &quot;Masukmi&quot; saja</p>
+            <button class="popup-close" id="popupClose">
+                Masukmi            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    animation: popupFadeIn 0.5s ease-out forwards;
+}
+
+.popup-container {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transform: scale(0.7);
+    animation: popupScaleIn 0.5s ease-out 0.2s forwards;
+}
+
+.popup-content h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.popup-content p {
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.popup-close {
+    background: var(--gradient);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.popup-close:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(74, 107, 255, 0.4);
+}
+
+@keyframes popupFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popupScaleIn {
+    to {
+        transform: scale(1);
+    }
+}
+
+.popup-overlay.hiding {
+    animation: popupFadeOut 0.3s ease-in forwards;
+}
+
+.popup-container.hiding {
+    animation: popupScaleOut 0.3s ease-in forwards;
+}
+
+@keyframes popupFadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes popupScaleOut {
+    to {
+        transform: scale(0.7);
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popupClose = document.getElementById('popupClose');
+    
+    // Check if popup should be shown
+        if (!localStorage.getItem('popupShown')) {
+        showPopup();
+    }
+        
+    function showPopup() {
+        popupOverlay.style.display = 'flex';
+        localStorage.setItem('popupShown', 'true');
+    }
+    
+    function hidePopup() {
+        popupOverlay.classList.add('hiding');
+        popupOverlay.querySelector('.popup-container').classList.add('hiding');
+        setTimeout(() => {
+            popupOverlay.style.display = 'none';
+        }, 300);
+    }
+    
+    popupClose.addEventListener('click', hidePopup);
+    
+    // Close popup when clicking outside
+    popupOverlay.addEventListener('click', function(e) {
+        if (e.target === popupOverlay) {
+            hidePopup();
+        }
+    });
+    
+    // Close popup with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popupOverlay.style.display === 'flex') {
+            hidePopup();
+        }
+    });
+});
+</script>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+    
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+            <img src="logo kelas.jpeg" alt="Logo Technonauts" class="logo-img">
+            <span class="logo-text">TECHNONAUTS</span>
+        </a>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="#home" class="nav-link">Beranda</a>
+            <a href="#structure" class="nav-link">Struktur</a>
+            <a href="#schedule" class="nav-link">Jadwal</a>
+            <a href="#gallery" class="nav-link">Galeri</a>
+            <a href="#contact" class="nav-link">Kontak</a>
+            <a href="mailto:muhakbaralmanshurin@gmail.com" class="admin-login">
+                <i class="fas fa-user-shield"></i> Admin
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Kelas XI-TJKT-2<br>Technonauts</h1>
+                <p class="hero-subtitle">Kelas belajar yang terampil di bidang Teknik Komputer, Jaringan, dan Telekomunikasi, berwawasan luas, dan siap merangkul dunia kerja, serta kompak menjalin kebersamaan di dalam maupun diluar kelas.</p>
+                <div class="hero-buttons">
+                    <a href="#structure" class="btn btn-primary">
+                        <i class="fas fa-users"></i> Jelajahi Kelas
+                    </a>
+                    <a href="#gallery" class="btn btn-outline">
+                        <i class="fas fa-images"></i> Lihat Galeri
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Wali Kelas Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Wali Kelas</h2>
+            <div class="wali-kelas-card">
+                <img src="foto guru.jpeg" alt="Wali Kelas" class="wali-kelas-img" onerror="this.src='https://source.unsplash.com/random/300x300/?teacher'">
+                <div class="wali-kelas-info">
+                    <h3 id="wali-kelas-nama">Wahyu Caesar Ramadhan, S.Kom</h3>
+                    <p><i class="fas fa-graduation-cap"></i> <span id="wali-kelas-gelar">Guru Mapel Jurusan TJKT</span></p>
+                    <p><i class="fas fa-envelope"></i> <span id="wali-kelas-email">Wahyu0250@guru.smk.belajar.id</span></p>
+                    <p><i class="fas fa-quote-left"></i> <span id="wali-kelas-motto">&quot;Jelajahi teknologi untuk menjelajahi dunia masa depan.&quot;</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Structure Section -->
+<section id="structure" class="section">
+  <div class="container">
+    <h2 class="section-title">Struktur Kelas</h2>
+
+    <div class="structure-container">
+      <div class="structure-tree">
+
+        <!-- Level 1: Wali Kelas -->
+        <div class="structure-level">
+          <div class="structure-item wali-kelas">
+            <div class="structure-role">WALI KELAS</div>
+            <div class="structure-name">Wahyu Caesar Ramadhan, S.Kom</div>
+          </div>
+          <div class="structure-line down"></div>
+        </div>
+
+        <!-- Level 2: Ketua & Wakil -->
+        <div class="structure-level double">
+          <div class="structure-item ketua">
+            <div class="structure-role">KETUA KELAS</div>
+            <div class="structure-name">NUR SYAKIRA AIN</div>
+          </div>
+          <div class="structure-item wakil">
+            <div class="structure-role">WAKIL KETUA</div>
+            <div class="structure-name">MUH. RIYAD AZZIKRA</div>
+          </div>
+          <div class="structure-line down"></div>
+        </div>
+
+        <!-- Level 3: Sekretaris, Bendahara, Kebersihan, Keamanan -->
+        <div class="structure-level multi">
+          <div class="structure-item sekretaris">
+            <div class="structure-role">SEKRETARIS</div>
+            <div class="structure-name">SOFIANI</div>
+          </div>
+          <div class="structure-item bendahara">
+            <div class="structure-role">BENDAHARA</div>
+            <div class="structure-name">CHYKA AULIA ERNESTA</div>
+          </div>
+          <div class="structure-item kebersihan">
+            <div class="structure-role">KEBERSIHAN</div>
+            <div class="structure-name">ZEPHIRA OSWALIVIA</div>
+          </div>
+          <div class="structure-item keamanan">
+            <div class="structure-role">KEAMANAN</div>
+            <div class="structure-name">MUSLIMAH</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+    
+    <!-- Schedule Section -->
+    <section id="schedule" class="section">
+        <div class="container">
+            <h2 class="section-title">Jadwal</h2>
+            <div class="schedule-container">
+                <div class="schedule-card">
+                    <h3><i class="fas fa-book-open"></i> Jadwal Pelajaran</h3>
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Hari</th>
+                                <th>Mata Pelajaran</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                                        <tr>
+                                <td><strong>SENIN</strong></td>
+                                <td>MATEMATIKA<br>BAHASA INDONESIA<br>PENDIDIKAN AGAMA</td>
+                            </tr>
+                                                        <tr>
+                                <td><strong>SELASA</strong></td>
+                                <td>PENDIDIKAN JASMANI DAN OLAHRAGA<br>BAHASA INGGRIS<br>MATA PELAJARAN JURUSAN</td>
+                            </tr>
+                                                        <tr>
+                                <td><strong>RABU</strong></td>
+                                <td>MUATAN LOKAL<br>KOMPETENSI KEAHLIAN JURUSAN 2</td>
+                            </tr>
+                                                        <tr>
+                                <td><strong>KAMIS</strong></td>
+                                <td>PROJEK KREATIF KEWIRAUSAHAWAN<br>KOMPETENSI KEAHLIAN JURUSAN 1</td>
+                            </tr>
+                                                        <tr>
+                                <td><strong>JUMAT</strong></td>
+                                <td>KOMPETENSI KEAHLIAN JURUSAN 1<br>PANCASILA<br>SEJARAH</td>
+                            </tr>
+                                                    </tbody>
+                    </table>
+                </div>
+                
+                <div class="schedule-card">
+                    <h3><i class="fas fa-broom"></i> Jadwal Piket</h3>
+                    <ul class="piket-list">
+                                                <li>
+                            <i class="fas fa-calendar-day"></i>
+                            <div>
+                                <strong>SENIN</strong>
+                                <div>Febri - Junot<br>Ratni - Riska<br>Aisyah</div>
+                            </div>
+                        </li>
+                                                <li>
+                            <i class="fas fa-calendar-day"></i>
+                            <div>
+                                <strong>SELASA</strong>
+                                <div>Abdi - Iksan<br>Haidir - Sinar<br>Cika - Fatim</div>
+                            </div>
+                        </li>
+                                                <li>
+                            <i class="fas fa-calendar-day"></i>
+                            <div>
+                                <strong>RABU</strong>
+                                <div>Akbar - Riyad<br>Sofia - Husnul<br>Isyana</div>
+                            </div>
+                        </li>
+                                                <li>
+                            <i class="fas fa-calendar-day"></i>
+                            <div>
+                                <strong>KAMIS</strong>
+                                <div>Abdul - Niel<br>Rara - Paridah<br>Muslimah - Zephira</div>
+                            </div>
+                        </li>
+                                                <li>
+                            <i class="fas fa-calendar-day"></i>
+                            <div>
+                                <strong>JUMAT</strong>
+                                <div>Andika - Zakay<br>Rizky - Ira<br>Bylqis - Jelita</div>
+                            </div>
+                        </li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-title">Album Kenangan</h2>
+            <div class="gallery-grid">
+                                <div class="gallery-item">
+                    <img src="foto1.jpeg" alt="6" onerror="this.src='https://source.unsplash.com/random/600x400/?school'">
+                    <div class="gallery-overlay">
+                        <h4>6</h4>
+                    </div>
+                </div>
+                                <div class="gallery-item">
+                    <img src="foto2.jpeg" alt="5" onerror="this.src='https://source.unsplash.com/random/600x400/?school'">
+                    <div class="gallery-overlay">
+                        <h4>5</h4>
+                    </div>
+                </div>
+                                <div class="gallery-item">
+                    <img src="foto3.jpeg" alt="4" onerror="this.src='https://source.unsplash.com/random/600x400/?school'">
+                    <div class="gallery-overlay">
+                        <h4>4</h4>
+                    </div>
+                </div>
+                                <div class="gallery-item">
+                    <img src="foto4.jpeg" alt="3" onerror="this.src='https://source.unsplash.com/random/600x400/?school'">
+                    <div class="gallery-overlay">
+                        <h4>3</h4>
+                    </div>
+                </div>
+                                <div class="gallery-item">
+                    <img src="foto5.jpeg" alt="2" onerror="this.src='https://source.unsplash.com/random/600x400/?school'">
+                    <div class="gallery-overlay">
+                        <h4>2</h4>
+                    </div>
+                </div>
+                                <div class="gallery-item">
+                    <img src="foto6.jpeg" alt="1" onerror="this.src='https://source.unsplash.com/random/600x400/?school'">
+                    <div class="gallery-overlay">
+                        <h4>1</h4>
+                    </div>
+                </div>
+                            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">TECHNONAUTS</a>
+                    <p class="footer-about">Website resmi kelas XI-TJKT-2 SMK NEGERI 3 KENDARI. Sekolah berbasis Pariwisata dan Teknologi. Menyiapkan lulusan yang siap kerja untuk mewujudkan Indonesia Emas 2045.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/ofc_technonauts/" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@tecnonauts" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.google.com/maps/place/SMK+Negeri+3+Kendari/@-3.9874109,122.5042685,18.99z/data=!4m6!3m5!1s0x2d98f2d685b38f43:0x6a4d76405017e44d!8m2!3d-3.9873517!4d122.5041481!16s%2Fg%2F11c2r5hnkx?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Menu Cepat</h3>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-arrow-right"></i> Beranda</a></li>
+                        <li><a href="#structure"><i class="fas fa-arrow-right"></i> Struktur Kelas</a></li>
+                        <li><a href="#schedule"><i class="fas fa-arrow-right"></i> Jadwal Pelajaran</a></li>
+                        <li><a href="#gallery"><i class="fas fa-arrow-right"></i> Album Foto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="mailto:muhakbaralmanshurin@gmail.com"><i class="fas fa-user"></i> Admin</a></li>
+                        <li><a href="https://www.whatsapp.com" rel="noopener noreferrer"><i class="fas fa-phone"></i> 0813-7641-7472</a></li>
+                        <li><a href="mailto:Wahyu0250@guru.smk.belajar.id"><i class="fas fa-envelope"></i> Wahyu0250@guru.smk.belajar.id</a></li>
+                        <li><a href="https://www.google.com/maps/place/SMK+Negeri+3+Kendari/@-3.9874109,122.5042685,18.99z/data=!4m6!3m5!1s0x2d98f2d685b38f43:0x6a4d76405017e44d!8m2!3d-3.9873517!4d122.5041481!16s%2Fg%2F11c2r5hnkx?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer"><i class="fas fa-map-marker-alt"></i> Alamat Sekolah</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Technonauts - Kelas XI-TJKT-2. All Rights Reserved. <br>Powered By Visual Studio Code
+            </div>
+        </div>
+    </footer>
+
+    <!-- Gallery Modal -->
+    <div class="gallery-modal" id="galleryModal">
+        <button class="modal-close" id="modalClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="modal-nav modal-prev" id="modalPrev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="modal-nav modal-next" id="modalNext">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="modal-counter" id="modalCounter">1/6</div>
+        
+        <div class="modal-content">
+            <div class="modal-image-container">
+                <img class="modal-image" id="modalImage" src="" alt="">
+            </div>
+            <div class="modal-info">
+                <h3 class="modal-title" id="modalTitle"></h3>
+                <p class="modal-alt" id="modalAlt"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        function setTheme(isDark) {
+            document.documentElement.className = isDark ? 'dark-mode' : 'light-mode';
+            themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            document.cookie = `darkMode=${isDark}; path=/; max-age=31536000`; // 1 year
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            themeIcon.style.animation = 'themeSwitch 0.6s ease';
+            setTimeout(() => {
+                setTheme(!isDark);
+                themeIcon.style.animation = '';
+            }, 300);
+        });
+        
+        // Set initial theme
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = document.cookie.includes('darkMode=true');
+        if (savedTheme) {
+            setTheme(true);
+        } else if (prefersDark && !document.cookie.includes('darkMode=')) {
+            setTheme(true);
+        }
+        
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.structure-item, .schedule-card, .gallery-item, .piket-list li').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Gallery Modal Functionality dengan Animasi Smooth
+        const galleryModal = document.getElementById('galleryModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalAlt = document.getElementById('modalAlt');
+        const modalClose = document.getElementById('modalClose');
+        const modalPrev = document.getElementById('modalPrev');
+        const modalNext = document.getElementById('modalNext');
+        const modalCounter = document.getElementById('modalCounter');
+
+        let currentImageIndex = 0;
+        const galleryImages = [{"src":"uploads\/gallery\/68d9e5c5bbf93.jpg","alt":"6","title":"6"},{"src":"uploads\/gallery\/68d9e5a67feb0.jpg","alt":"5","title":"5"},{"src":"uploads\/gallery\/68d9e57c9aa7b.jpg","alt":"4","title":"4"},{"src":"uploads\/gallery\/68d9e5126ea18.jpg","alt":"3","title":"3"},{"src":"uploads\/gallery\/68d9e4fd0e752.jpg","alt":"2","title":"2"},{"src":"uploads\/gallery\/68d9e2de5b294.jpg","alt":"1","title":"1"}];
+
+        // Add click event to gallery items
+        document.querySelectorAll('.gallery-item').forEach((item, index) => {
+            item.addEventListener('click', () => {
+                openGalleryModal(index);
+            });
+        });
+
+        function openGalleryModal(index) {
+            currentImageIndex = index;
+            updateModalContent();
+            galleryModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Reset animation state
+            modalImage.classList.remove('slide-left', 'slide-right');
+        }
+
+        function updateModalContent() {
+            const image = galleryImages[currentImageIndex];
+            modalImage.src = image.src;
+            modalImage.alt = image.alt;
+            modalTitle.textContent = image.title;
+            modalAlt.textContent = image.alt;
+            modalCounter.textContent = `${currentImageIndex + 1}/${galleryImages.length}`;
+            
+            // Update navigation buttons
+            modalPrev.disabled = currentImageIndex === 0;
+            modalNext.disabled = currentImageIndex === galleryImages.length - 1;
+        }
+
+        function closeGalleryModal() {
+            galleryModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function showNextImage() {
+            if (currentImageIndex < galleryImages.length - 1) {
+                currentImageIndex++;
+                modalImage.classList.add('slide-left');
+                updateModalContent();
+                setTimeout(() => {
+                    modalImage.classList.remove('slide-left');
+                }, 600);
+            }
+        }
+
+        function showPrevImage() {
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+                modalImage.classList.add('slide-right');
+                updateModalContent();
+                setTimeout(() => {
+                    modalImage.classList.remove('slide-right');
+                }, 600);
+            }
+        }
+
+        // Event listeners for modal
+        modalClose.addEventListener('click', closeGalleryModal);
+        modalNext.addEventListener('click', showNextImage);
+        modalPrev.addEventListener('click', showPrevImage);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (galleryModal.classList.contains('active')) {
+                if (e.key === 'Escape') closeGalleryModal();
+                if (e.key === 'ArrowRight') showNextImage();
+                if (e.key === 'ArrowLeft') showPrevImage();
+            }
+        });
+
+        // Close modal when clicking outside
+        galleryModal.addEventListener('click', (e) => {
+            if (e.target === galleryModal) {
+                closeGalleryModal();
+            }
+        });
+
+        // Touch swipe for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        modalImage.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        modalImage.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next image
+                    showNextImage();
+                } else {
+                    // Swipe right - previous image
+                    showPrevImage();
+                }
+            }
+        }
+
+        // Preload images for smoother transitions
+        function preloadImages() {
+            galleryImages.forEach(image => {
+                const img = new Image();
+                img.src = image.src;
+            });
+        }
+
+        // Preload images on page load
+        window.addEventListener('load', preloadImages);
+    </script>
+</body>
+</html>
